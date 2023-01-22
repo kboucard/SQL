@@ -1,46 +1,11 @@
---Create a store database
+# In this SQL, I'm querying a database with multiple tables in it to quantify statistics about the inventory of an Accessory Store.
 
-/**accessories:
-glasses (32)
-hats (45)
-belts (64)
-handbags (23)
-shoes (102)
-watches (15)
-rings (93)
-earrings (119)
-necklaces (54)
-scarves (26)
-bracelets (39)
-headbands (71)
-scrunchies (44)
-socks (139)
-hair ties (88) **/
-
-CREATE TABLE accessories (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, section TEXT, quantity INTEGER);
-
-INSERT INTO accessories VALUES (1,"glasses", 15, "outerwear", 32);
-INSERT INTO accessories VALUES (2,"hats", 25, "outerwear", 45);
-INSERT INTO accessories VALUES (3,"shoes", 50, "shoes", 102);
-INSERT INTO accessories VALUES (4,"belts", 10, "misc", 64);
-INSERT INTO accessories VALUES (5, "handbags", 20, "misc", 23);
-INSERT INTO accessories VALUES (6, "WATCHES", 12, "MISC", 15);
-INSERT INTO accessories VALUES (7,"RINGS", 8, "JEWELRY", 93);
-INSERT INTO accessories VALUES (8,"EARRINGS", 10, "JEWELRY", 119);
-INSERT INTO accessories VALUES (9,"NECKLACES",15, "JEWELRY ", 54);
-INSERT INTO accessories VALUES (10,"SCARVES ", 13, "OUTERWEAR ", 26);
-INSERT INTO accessories VALUES (11,"BRACELETS ", 10, "JEWELRY ", 39);
-INSERT INTO accessories VALUES (12," HEADBANDS", 5, " HAIR", 71);
-INSERT INTO accessories VALUES (13,"SCRUNCHIES ", 5, "HAIR ", 44);
-INSERT INTO accessories VALUES (14,"SOCKS ", 12, "SHOES ", 139);
-INSERT INTO accessories VALUES (15," HAIR TIES", 3, " HAIR", 88);
-
---display database ordered by price
+#1. display database ordered by price
 
 SELECT * FROM accessories 
 ORDER BY price;
 
---display the total price amount of inventory
+#2. display the total price amount of inventory
 
 SELECT SUM(price*quantity) FROM accessories;
 
