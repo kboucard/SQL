@@ -1,0 +1,22 @@
+
+
+/* What are the job titles of the famous people?*/
+
+SELECT name, job_title FROM fam_ppl
+    JOIN job
+    ON fam_ppl.id = job.person_id;
+
+
+/* Which celebrities are friends?*/
+
+SELECT a.name, b.name FROM friends
+    JOIN fam_ppl a
+    ON a.id = friends.person1_id
+    JOIN fam_ppl b
+    ON b.id = friends.person2_id;
+    
+
+/* How many celebrities are under 50?*/
+
+SELECT COUNT (*) age FROM fam_ppl
+    WHERE age < 50;
