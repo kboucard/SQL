@@ -1,13 +1,14 @@
+# In this SQL, I'm querying a database with multiple related tables in it to quantify statistics about famous people and what they do.
 
 
-/* What are the job titles of the famous people?*/
+#1 What are the job titles of the famous people?*/
 
 SELECT name, job_title FROM fam_ppl
     JOIN job
     ON fam_ppl.id = job.person_id;
 
 
-/* Which celebrities are friends?*/
+#2 Which celebrities are friends?*/
 
 SELECT a.name, b.name FROM friends
     JOIN fam_ppl a
@@ -16,7 +17,7 @@ SELECT a.name, b.name FROM friends
     ON b.id = friends.person2_id;
     
 
-/* How many celebrities are under 50?*/
+#3 How many celebrities are under 50?*/
 
 SELECT COUNT (*) age FROM fam_ppl
     WHERE age < 50;
