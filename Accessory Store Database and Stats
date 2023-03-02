@@ -2,12 +2,14 @@
 
 #1. display database ordered by price
 
-SELECT * FROM accessories 
+SELECT * 
+FROM accessories 
 ORDER BY price;
 
 #2. display the total price amount of inventory
 
-SELECT SUM(price*quantity) FROM accessories;
+SELECT SUM(price*quantity) 
+FROM accessories;
 
 
 
