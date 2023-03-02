@@ -3,17 +3,22 @@
 
 #1. Which country has the least & most popualted territory?*/
 
-SELECT name,population FROM countries ORDER BY population;
+SELECT name,population 
+FROM countries 
+ORDER BY population;
 
 
 #2. How many countries have a median_age > 40*/
 
-SELECT COUNT(*) FROM countries WHERE median_age > 40;
+SELECT COUNT(*) 
+FROM countries 
+WHERE median_age > 40;
 
 
 #3. What's the total pop of all countries*/
 
-SELECT SUM(population) FROM countries;
+SELECT SUM(population) 
+FROM countries;
 
 
 #4. Which countries have the highest fertility_rate with a population below 50,000,000, above 100,000,000 and everthing else in between?*/
