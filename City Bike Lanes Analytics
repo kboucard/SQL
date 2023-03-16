@@ -1,0 +1,21 @@
+#In this project, I created a table and inserted data for city bike lanes using SQLite Studio. I ran queries with CTEs to answer questions.
+
+
+#1. List all the bike lanes that have an average safety rating of 4.0 or higher. Show the average safety rating for each of those bike lanes, and a label that says "Safe Lane".
+
+WITH average_sr_cte AS (
+SELECT street, AVG(safetyrating) AS avg_sr
+FROM CityBikeLanes
+GROUP BY street)
+
+SELECT avg_sr, street, 'Safe Lane' AS 'label'
+FROM average_sr_cte
+WHERE avg_sr >= 4;
+
+
+
+
+
+
+
+
