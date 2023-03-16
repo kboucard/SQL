@@ -1,4 +1,4 @@
-#In this project, I created a table and inserted data for city bike lanes using SQLite Studio. I ran queries with CTEs to answer questions.
+#In this project, I created a table and inserted data for city bike lanes using SQLite Studio. I ran queries with CTEs and Window Functions to answer questions.
 
 
 #1. List all the bike lanes that have an average safety rating of 4.0 or higher. Show the average safety rating for each of those bike lanes, and a label that says "Safe Lane".
@@ -13,7 +13,19 @@ FROM average_sr_cte
 WHERE avg_sr >= 4;
 
 
+#2. Now, the city has decided to remove the least safe bike lanes, make improvements on the bike lanes that are already somewhat safe, and leave the most safe bike lanes as-is. List of all the bike lanes, both safety ratings for each lane given by the two technicians, the average safety rating for each lane, and a label with the recommendation as "Remove", "Leave As-Is", or "Improvements Needed".
+--Bike lanes with an average safety rating of 4 or more should be labeled "Leave As-Is".
+--Bike lanes with an average safety rating of less than 2.5 should be labeled as "Remove".
+--All other bike lanes should be labeled as "Improvements Needed".
 
+SELECT street, safetyrating, AVG(safetyrating)
+OVER (PARTITION BY street) AS "Average_safety_rating",
+CASE 
+WHEN AVG(safetyrating) OVER (PARTITION BY street) >= 4 THEN "Leave As-Is"
+WHEN AVG(safetyrating) OVER (PARTITION BY street) < 2.5 THEN "Remove"
+ELSE "Improvements Needed"
+END AS "Recommendation"
+FROM CityBikeLanes;
 
 
 
