@@ -213,12 +213,57 @@ FROM triangles;
 
 
 
-#23. 
+#23. A) Query an alphabetically ordered list of all names in OCCUPATIONS, immediately followed by the first letter of each profession as a parenthetical (i.e.: enclosed in parentheses). For example: AnActorName(A), ADoctorName(D), AProfessorName(P), and ASingerName(S).
+B) Query the number of ocurrences of each occupation in OCCUPATIONS. Sort the occurrences in ascending order, and output them in the following format:
+
+
+SELECT
+CONCAT(name,"(",left(occupation,1),")") FROM
+occupations
+ORDER BY name ASC;
+SELECT
+'There are a total of',count(occupation),concat(lower(occupation),"s.")
+FROM occupations
+GROUP BY occupation 
+ORDER BY COUNT(occupation),occupation ASC;
 
 
 
+#24. Pivot the Occupation column in OCCUPATIONS so that each Name is sorted alphabetically and displayed underneath its corresponding Occupation. The output column headers should be Doctor, Professor, Singer, and Actor, respectively.
+
+**Note: Print NULL when there are no more names corresponding to an occupation.
 
 
+SELECT
+Doctor,
+Professor,
+Singer,
+Actor
+FROM (
+SELECT 
+ NameOrder,
+    MAX(CASE Occupation WHEN 'Doctor' THEN Name END) AS Doctor,
+    MAX(CASE Occupation WHEN 'Professor' THEN Name END) AS Professor,
+    MAX(CASE Occupation WHEN 'Singer' THEN Name END) AS Singerr,
+    MAX(CASE Occupation WHEN 'Actor' THEN Name END) AS Actor,
+          FROM (
+          SELECT
+           Occupation,
+           Name,
+               ROW_NUMBER() OVER(PARTITION BY Occupation ORDER BY Name ASC) AS NameOrder
+          FROM Occupations
+                ) AS NameLists
+                  GROUP BY NameOrder
+      ) AS Names;
+
+
+
+#25. You are given a table, BST, containing two columns: N and P, where N represents the value of a node in Binary Tree, and P is the parent of N. 
+Write a query to find the node type of Binary Tree ordered by the value of the node. Output one of the following for each node:
+
+Root: If node is root node.
+Leaf: If node is leaf node.
+Inner: If node is neither root nor leaf node.
 
 
 
