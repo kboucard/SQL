@@ -1,4 +1,4 @@
-#
+#In this SQL, I'm querying a database to quantify statistics about items in a superstore.
 
 #1. Write your own SQL query that uses a SELECT statement to order the items by price.
 
