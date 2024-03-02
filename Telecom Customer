@@ -1,4 +1,4 @@
-#
+#In this SQL, I'm querying a database to quantify statistics about products dealing with telecom customers.
 
 #1. For your first query, write SQL that will select the product names of all the Internet products types.
 
