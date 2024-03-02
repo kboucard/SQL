@@ -1,4 +1,5 @@
-#
+#In this SQL, I'm querying a database to quantify statistics about employee salaries.
+
 
 #1. Calculate how much is spent per year on the salaries for each department where the total spent on the salaries is at least $300,000. Your results table should include the department name and the total spent on salaries in that department.
 
