@@ -1,4 +1,4 @@
-#
+#In this SQL, I'm querying a database to quantify statistics about an employee marathon.
 
 #1. Select every participant name and the percent of the marathon that they completed.
 
