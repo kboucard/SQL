@@ -1,3 +1,39 @@
 #
 
-#
+#1. Which industry has the highest average days of PTO?
+
+SELECT industry, ROUND(AVG(paid_time_off_days),1) 
+AS avg_PTO
+FROM fortune_companies
+GROUP BY industry
+HAVING avg_PTO
+ORDER BY avg_PTO DESC;
+
+#2. Which company doesn't have healthcare benefits?
+
+SELECT company_name, healthcare_benefits
+FROM fortune_companies
+WHERE healthcare_benefits = 0;
+
+#3. Which company has the least amount of employees?
+
+SELECT company_name, MIN(employees)
+FROM fortune_companies
+ORDER BY employees;
+
+#4. Determine which companies give the best maternity leave (20+ = "Excellent",15+ = "Great", 10+ = "OK", under 10 = "Bad").
+
+SELECT DISTINCT company_name, maternity_leave_weeks,
+CASE WHEN maternity_leave_weeks >= 15 THEN "Excellent"
+WHEN maternity_leave_weeks >= 10 THEN "Great"
+WHEN maternity_leave_weeks >= 5 THEN "OK"
+ELSE "Bad"
+END AS Recovery
+FROM fortune_companies
+ORDER BY maternity_leave_weeks DESC;
+
+#5. How many companies are in each industry?
+
+SELECT COUNT(company_name), industry
+FROM fortune_companies
+GROUP BY industry;
