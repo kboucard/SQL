@@ -1,4 +1,4 @@
-#In this SQL, I'm querying a database to quantify statistics about employee salaries.
+#This analysis utilized the following SALARY dataset:
 
 CREATE TABLE employees (
     employee_id INTEGER PRIMARY KEY,
