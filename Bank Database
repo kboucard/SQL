@@ -1,4 +1,4 @@
-#In this SQL, I'm querying a database to quantify statistics about bank products.
+#This analysis utilized the following BANK dataset:
 
 CREATE TABLE bank_products (
     product_id INTEGER PRIMARY KEY,
