@@ -1,4 +1,5 @@
-#
+#In this SQL, I'm querying a database to quantify statistics about fortune 500 data.
+
 
 #1. Which industry has the highest average days of PTO?
 
