@@ -77,3 +77,19 @@ VALUES
 
 #ANALYSIS
 
+#1. Which medications has Dr. Garcia prescribed?
+
+SELECT DISTINCT p.doctor_name, m.medication_name
+FROM prescriptions p
+INNER JOIN medication m
+ON p.person_ID = m.person_ID
+WHERE doctor_name = 'Dr. Garcia';
+
+#2. Zonkify is no longer on the market. When were all the Zonkify prescriptions last filled? 
+
+SELECT p.date_filled, m.medication_name
+FROM prescriptions p
+INNER JOIN medication m
+ON p.person_ID = m.person_ID
+WHERE m.medication_name = 'Zonkify'
+ORDER BY date_filled desc;
