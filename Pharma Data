@@ -1,3 +1,4 @@
+#This analysis utilized the following PHARMA dataset:
 
 
 CREATE TABLE prescriptions (
