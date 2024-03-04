@@ -1,32 +1,95 @@
+#This analysis utilized the following FAMOUS PEOPLE dataset (wich I created):
 
 
-CREATE TABLE persons (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE fam_ppl
+    (id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     age INTEGER);
-    
-INSERT INTO persons (name, age) VALUES ("Bobby McBobbyFace", 12);
-INSERT INTO persons (name, age) VALUES ("Lucy BoBucie", 25);
-INSERT INTO persons (name, age) VALUES ("Banana FoFanna", 14);
-INSERT INTO persons (name, age) VALUES ("Shish Kabob", 20);
-INSERT INTO persons (name, age) VALUES ("Fluffy Sparkles", 8);
 
-CREATE table hobbies (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+INSERT INTO fam_ppl (name, age) VALUES ("Serena Williams", "41");
+INSERT INTO fam_ppl (name, age) VALUES ("Michael Jordan", "59");
+INSERT INTO fam_ppl (name, age) VALUES ("Michael Phelps", "37");
+INSERT INTO fam_ppl (name, age) VALUES ("Lionel Messi", "35");
+INSERT INTO fam_ppl (name, age) VALUES ("Usain Bolt", "36");
+INSERT INTO fam_ppl (name, age) VALUES ("Michael Jackson", "50");
+INSERT INTO fam_ppl (name, age) VALUES ("Beyonce", "41");
+INSERT INTO fam_ppl (name, age) VALUES ("Harry Styles", "28");
+INSERT INTO fam_ppl (name, age) VALUES ("Justin Bieber", "28");
+INSERT INTO fam_ppl (name, age) VALUES ("Bruno Mars", "37");
+INSERT INTO fam_ppl (name, age) VALUES ("Leonaro DiCaprio", "48");
+INSERT INTO fam_ppl (name, age) VALUES ("Denzel Washington", "68");
+INSERT INTO fam_ppl (name, age) VALUES ("Viola Davis", "57");
+INSERT INTO fam_ppl (name, age) VALUES ("Meryl Streep", "73");
+INSERT INTO fam_ppl (name, age) VALUES ("Lashana Lynch", "35");
+INSERT INTO fam_ppl (name, age) VALUES ("MrBeast", "24");
+INSERT INTO fam_ppl (name, age) VALUES ("KevOnStage", "38");
+INSERT INTO fam_ppl (name, age) VALUES ("Patrick Cloud", "33");
+INSERT INTO fam_ppl (name, age) VALUES ("Ricky Thompson", "26");
+INSERT INTO fam_ppl (name, age) VALUES ("Denzel Dion", "25");
+
+
+CREATE TABLE job
+    (id INTEGER PRIMARY KEY AUTOINCREMENT,
     person_id INTEGER,
-    name TEXT);
+    job_title TEXT);
     
-INSERT INTO hobbies (person_id, name) VALUES (1, "drawing");
-INSERT INTO hobbies (person_id, name) VALUES (1, "coding");
-INSERT INTO hobbies (person_id, name) VALUES (2, "dancing");
-INSERT INTO hobbies (person_id, name) VALUES (2, "coding");
-INSERT INTO hobbies (person_id, name) VALUES (3, "skating");
-INSERT INTO hobbies (person_id, name) VALUES (3, "rowing");
-INSERT INTO hobbies (person_id, name) VALUES (3, "drawing");
-INSERT INTO hobbies (person_id, name) VALUES (4, "coding");
-INSERT INTO hobbies (person_id, name) VALUES (4, "dilly-dallying");
-INSERT INTO hobbies (person_id, name) VALUES (4, "meowing");
+INSERT INTO job (person_id, job_title) VALUES (1, "athlete");
+INSERT INTO job (person_id, job_title) VALUES (2, "athlete");
+INSERT INTO job (person_id, job_title) VALUES (3, "athlete");
+INSERT INTO job (person_id, job_title) VALUES (4, "athlete");
+INSERT INTO job (person_id, job_title) VALUES (5, "athlete");
+INSERT INTO job (person_id, job_title) VALUES (6, "music artist");
+INSERT INTO job (person_id, job_title) VALUES (7, "music artist");
+INSERT INTO job (person_id, job_title) VALUES (8, "music artist");
+INSERT INTO job (person_id, job_title) VALUES (9, "music artist");
+INSERT INTO job (person_id, job_title) VALUES (10, "music artist");
+INSERT INTO job (person_id, job_title) VALUES (11, "actor");
+INSERT INTO job (person_id, job_title) VALUES (13, "actor");
+INSERT INTO job (person_id, job_title) VALUES (14, "actor");
+INSERT INTO job (person_id, job_title) VALUES (15, "actor");
+INSERT INTO job (person_id, job_title) VALUES (16, "content creator");
+INSERT INTO job (person_id, job_title) VALUES (17, "content creator");
+INSERT INTO job (person_id, job_title) VALUES (18, "content creator");
+INSERT INTO job (person_id, job_title) VALUES (20, "content creator");
+
+
+CREATE TABLE friends
+    (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    person1_id INTEGER,
+    person2_id INTEGER);
+
+INSERT INTO friends (person1_id, person2_id) VALUES (1, 13);
+INSERT INTO friends (person1_id, person2_id) VALUES (12, 19);
+INSERT INTO friends (person1_id, person2_id) VALUES (3, 9);
+INSERT INTO friends (person1_id, person2_id) VALUES (2, 11);
+INSERT INTO friends (person1_id, person2_id) VALUES (4, 10);
+INSERT INTO friends (person1_id, person2_id) VALUES (5, 16);
+INSERT INTO friends (person1_id, person2_id) VALUES (6, 20);
+INSERT INTO friends (person1_id, person2_id) VALUES (7, 18);
+INSERT INTO friends (person1_id, person2_id) VALUES (8, 15);
+INSERT INTO friends (person1_id, person2_id) VALUES (14, 17);
 
 
 #ANALYSIS
+
+#1. What are the job titles of the famous people?
+
+SELECT name, job_title FROM fam_ppl
+    JOIN job
+    ON fam_ppl.id = job.person_id;
+
+
+#2. Which celebrities are friends?
+
+SELECT a.name, b.name FROM friends
+    JOIN fam_ppl a
+    ON a.id = friends.person1_id
+    JOIN fam_ppl b
+    ON b.id = friends.person2_id;
+    
+
+#3. How many celebrities are under 50?
+
+SELECT COUNT (*) age FROM fam_ppl
+    WHERE age < 50;
 
