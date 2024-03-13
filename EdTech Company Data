@@ -1,3 +1,4 @@
+#This analysis utilized the following EDTECH COMPANY dataset:
 
 
 CREATE TABLE Courses (
@@ -128,4 +129,47 @@ INSERT INTO AuthorTextbookLink (AuthorID, TextbookID) VALUES
 #ANALYSIS
 
 
-#1. 
+#1. Find the names of all the economics courses that are currently being taught.
+
+SELECT CourseName
+FROM Courses
+WHERE Subject = 'Economics'
+AND Current = 'Yes';
+
+
+#2. Find the titles of the textbooks currently used in the economics courses. Your results should include the course name and the textbook name.
+
+SELECT c.CourseName, t.Title
+FROM Courses c
+INNER JOIN Textbooks t
+ON c.CourseID = t.CourseID
+WHERE Subject = 'Economics'
+AND Current = 'Yes';
+
+
+#3. Find the names of the authors who wrote the textbooks. Your answer should include the name of the course, the name of the textbook, and the name of the author.
+
+SELECT c.CourseName, t.Title, a.Name
+FROM Courses c
+INNER JOIN Textbooks t
+ON c.CourseID = t.CourseID
+
+LEFT JOIN AuthorTextbookLink at
+ON t.TextbookID = at.TextbookID
+
+LEFT JOIN Author a
+ON at.AuthorID = a.AuthorID
+
+WHERE Subject = 'Economics'
+AND Current = 'Yes'
+ORDER BY a.Name;
+
+
+
+
+
+
+
+
+
+
