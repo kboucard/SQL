@@ -1,7 +1,5 @@
 #In this SQL, I'm querying a database with multiple tables in it to quantify statistics about customers and their order data. 
 
-
-
 #1. How many orders were placed in January? 
 
 SELECT COUNT (orderID) 
