@@ -24,4 +24,36 @@ print(f'{fortune_text} Your Luck Number is: {lucky_number}')
 
 
 
+##Build a list
+
+fav_movies = ["Harry Potter", "The Princess and the Frog", "Wicked","Shark Tale", "Mamma Mia"]
+
+print(fav_movies[0])
+
+fav_movies.append("The Lion King")
+
+print(len(fav_movies))
+
+print(fav_movies)
+
+fav_movies.insert(2, "The Little Mermaid")
+
+print(fav_movies)
+
+del(fav_movies[5])
+
+print(fav_movies)
+
+del(fav_movies[1])
+del(fav_movies[1])
+del(fav_movies[1])
+del(fav_movies[1])
+del(fav_movies[1])
+
+print(fav_movies)
+
+
+
+
+
 ##
